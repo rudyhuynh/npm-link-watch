@@ -1,0 +1,28 @@
+{
+  "name": "npm-link-watch",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "rudyhuynh <rudyhuynh@github.com>",
+  "license": "MIT",
+  "bin": {
+    "npm-link-watch": "src/linkWatch.js",
+    "npm-unlink-watch": "src/unlinkWatch.js"
+  },
+  "keywords": [
+    "npm",
+    "yarn",
+    "link",
+    "unlink"
+  ],
+  "repository": "github:rudyhuynh/npm-link-only",
+  "bugs": "https://github.com/rudyhuynh/npm-link-only/issues",
+  "dependencies": {
+    "fs-extra": "^8.1.0",
+    "glob": "^7.1.4",
+    "rimraf": "^2.6.3",
+    "validate-npm-package-name": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0"
+  }
+}
