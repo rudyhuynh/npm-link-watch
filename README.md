@@ -15,6 +15,8 @@ npx npm-link-watch x
 # --> a watcher will watch and sync `x/lib` to `<current_project>/node_modules/x/lib`.
 ```
 
+> Notice: If your package has just installed a new dependencies, you then have to install that into your project as well.
+
 ## API
 
 #### npx npm-link-watch <...paths>
