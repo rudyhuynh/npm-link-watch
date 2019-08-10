@@ -2,7 +2,7 @@ Similar to `npm link` or `yarn link` but instead of symlink the entire package, 
 
 ## How to use
 
-Use it similar to `npm link` or `yarn link`, but with path to directories/files specified. Example:
+Use it similar to `npm link` or `yarn link`:
 
 ```
 # Run at package `x`:
