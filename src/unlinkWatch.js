@@ -8,7 +8,7 @@ const {
   getNodeModulePath
 } = require("./common");
 
-const [, , packageName] = process.argv;
+const [, , ...packageNames] = process.argv;
 
 const { version } = require("../package.json");
 console.info(`npm-link-only v${version}`);
@@ -16,8 +16,14 @@ console.info(`npm-link-only v${version}`);
 main();
 
 function main() {
-  console.info(`Start to unlink ${packageName}`);
+  console.info(`Start to unlink ${packageNames.join(", ")}`);
 
+  packageNames.forEach(packageName => unlinkPerPackage(packageName));
+
+  console.info("Unlink Successfully!");
+}
+
+function unlinkPerPackage(packageName) {
   // remove global
   const removedPath = path.resolve(globalLinkPath, packageName);
   rimraf.sync(removedPath);
@@ -32,5 +38,4 @@ function main() {
       fs.existsSync(backupPath) && fs.copySync(backupPath, nodeModulePath);
       console.info(" Restored: " + nodeModulePath);
     });
-  console.info("Unlink Successfully!");
 }

@@ -19,18 +19,22 @@ npx npm-link-watch x
 
 ## API
 
-#### `npx npm-link-watch <...paths>`
+#### `npx npm-link-watch <...path>`
 
-- `...paths`: strings of relative paths (starts with `./`), separated by space
+- `...path`: strings of relative paths (start with `./`), separated by space.
 
 Save symbolic links of the specified `paths` into a global directory (`~/.npm-link-watch`).
 Run at the package you want to link and watch
 
-#### `npx npm-link-watch <package-name>`
+#### `npx npm-link-watch <...package-name>`
 
-Start a watcher that watch and sync directorys/files from `package-name` to `<current_project>/node_modules/package-name`.
+- `...package-name`: strings of package names (exact string in `package.json#name`), separated by space.
+
+Start a watcher that watch and sync directories/files from `package-name` to `<current_project>/node_modules/package-name`.
 Run at the project that has `package-name` as an installed dependency.
 
-#### `npx npm-unlink-watch <package-name>`
+#### `npx npm-unlink-watch <...package-name>`
+
+- `...package-name`: strings of package names (exact string in `package.json#name`), separated by space.
 
 Remove the symbolic links saved by `npx npm-link-watch ...paths` and restore all directories/files inside `<current_project>/node_modules/package-name` into their original form.
