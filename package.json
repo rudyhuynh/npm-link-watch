@@ -21,6 +21,6 @@
     "lerna": "^3.16.4"
   },
   "scripts": {
-    "publish": "lerna version patch --yes && lerna publish from-git --yes"
+    "pl": "lerna version patch --yes && lerna publish from-git --yes"
   }
 }
