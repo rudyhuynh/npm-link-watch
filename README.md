@@ -1,4 +1,4 @@
-This command line is to solve the problem of `npm/yarn link`: the linked package has its own `node_modules`, which results in a lots of issues with dupplicate modules.
+This command line is to solve the problem of `npm/yarn link`: the linked package has its own `node_modules`, which results in a lots of issues relate to dupplicate modules.
 
 Similar to `npm link` or `yarn link` but instead of symlink the entire package, `npm-link-watch` watch and sync specific directories/files inside the package.
 
