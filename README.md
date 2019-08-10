@@ -6,7 +6,7 @@ Similar to `npm link` or `yarn link` but instead of symlink the entire package, 
 
 Use it similar to `npm link` or `yarn link`:
 
-```
+```bash
 # Run at package `x`:
 npx npm-link-watch ./lib
 
