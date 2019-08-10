@@ -6,7 +6,7 @@ const {
   getGlobalSymlinks,
   globalLinkPath,
   getNodeModulePath
-} = require("./common");
+} = require("@npm-link-watch/common");
 var validateNpmPackageName = require("validate-npm-package-name");
 const chokidar = require("chokidar");
 
