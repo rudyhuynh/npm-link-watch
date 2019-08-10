@@ -27,5 +27,6 @@
   },
   "bundledDependencies": [
     "@npm-link-watch/common"
-  ]
+  ],
+  "gitHead": "c71e1011c4712ce3b8e7b6d845e39b1b8a0320f2"
 }

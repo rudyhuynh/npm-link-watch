@@ -15,7 +15,7 @@
   "repository": "github:rudyhuynh/npm-link-only",
   "bugs": "https://github.com/rudyhuynh/npm-link-only/issues",
   "dependencies": {
-    "@npm-link-watch/common": "file:../common",
+    "@npm-link-watch/common": "^1.0.6",
     "chokidar": "^3.0.2",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
@@ -27,5 +27,6 @@
   },
   "bundledDependencies": [
     "@npm-link-watch/common"
-  ]
+  ],
+  "gitHead": "c71e1011c4712ce3b8e7b6d845e39b1b8a0320f2"
 }
