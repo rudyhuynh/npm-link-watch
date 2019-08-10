@@ -29,7 +29,7 @@ Run at the package you want to link and watch
 #### `npx npm-link-watch <package-name>`
 
 Start a watcher that watch and sync directorys/files from `package-name` to `<current_project>/node_modules/package-name`.
-Run at the project that has `package-name` as an installed dependencies.
+Run at the project that has `package-name` as an installed dependency.
 
 #### `npx npm-unlink-watch <package-name>`
 
