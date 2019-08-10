@@ -30,11 +30,11 @@ npx npm-link-watch x
 
 - `...package-name`: strings of package names (exact string in `package.json#name`), separated by space.
 
-Start a watcher that watch and sync directories/files from `package-name` to `<current_project>/node_modules/package-name`.
-Run at the project that has `package-name` as an installed dependency.
+  Start a watcher that watch and sync directories/files from `package-name` to `<current_project>/node_modules/package-name`.
+  Run at the project that has `package-name` as an installed dependency.
 
 #### `npx npm-unlink-watch <...package-name>`
 
 - `...package-name`: strings of package names (exact string in `package.json#name`), separated by space.
 
-Remove the symbolic links saved by `npx npm-link-watch ...paths` and restore all directories/files inside `<current_project>/node_modules/package-name` into their original form.
+  Remove the symbolic links saved by `npx npm-link-watch ...paths` and restore all directories/files inside `<current_project>/node_modules/package-name` into their original form.
