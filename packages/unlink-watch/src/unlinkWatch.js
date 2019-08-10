@@ -6,12 +6,12 @@ const {
   getGlobalSymlinks,
   globalLinkPath,
   getNodeModulePath
-} = require("./common");
+} = require("@npm-link-watch/common");
 
 const [, , ...packageNames] = process.argv;
 
-const { version } = require("../package.json");
-console.info(`npm-link-only v${version}`);
+const { name, version } = require("../package.json");
+console.info(`${name} v${version}`);
 
 main();
 
