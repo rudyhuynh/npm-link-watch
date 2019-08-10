@@ -22,7 +22,7 @@ npx npm-link-watch x
   Save symbolic links of the specified `paths` into a global directory (`~/.npm-link-watch`).
   Run at the package you want to link and watch
 
-#### npx npm-link-only package-name
+#### npx npm-link-watch package-name
 
   Start a watcher that watch and sync directorys/files from `package-name` to `<current_project>/node_modules/package-name`
   Run at the project that has `package-name` as an installed dependencies.
