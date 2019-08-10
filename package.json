@@ -17,6 +17,7 @@
   "repository": "github:rudyhuynh/npm-link-only",
   "bugs": "https://github.com/rudyhuynh/npm-link-only/issues",
   "dependencies": {
+    "chokidar": "^3.0.2",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
     "rimraf": "^2.6.3",

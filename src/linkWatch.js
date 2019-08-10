@@ -6,8 +6,9 @@ const {
   getGlobalSymlinks,
   globalLinkPath,
   getNodeModulePath
-} = require("./utils");
+} = require("./common");
 var validateNpmPackageName = require("validate-npm-package-name");
+const chokidar = require("chokidar");
 
 const [, , ...params] = process.argv;
 
@@ -17,7 +18,7 @@ console.info(`${name} v${version}`);
 const cwd = process.cwd();
 
 function main() {
-  const param = params[0];
+  const param = params[0] || "";
   if (param.startsWith("./")) {
     link(params.filter(param => param.startsWith("./")));
   } else if (validateNpmPackageName(param).validForNewPackages) {
@@ -49,7 +50,7 @@ function link(dirPaths) {
   });
 
   console.info(
-    `\nLink Successfully! Now you can go to your project and run "npx npm-link-watch ${packageName}"`
+    `Link Successfully! Now you can go to your project and run "npx npm-link-watch ${packageName}"`
   );
 }
 
@@ -58,36 +59,42 @@ const watchers = {};
 function watch(packageName) {
   console.info(`Start to watch and sync from ${packageName}`);
 
-  getGlobalSymlinks()
+  getGlobalSymlinks(packageName)
     .map(file => fs.readlinkSync(file))
 
     .forEach(file => {
-      const nodeModulePath = getNodeModulePath(file, packageName);
-      const watcher = fs.watch(file, eventType => {
-        if (eventType === "change") {
-          sync(file, nodeModulePath);
-        }
-      });
+      const watcher = chokidar.watch(file);
 
-      backup(nodeModulePath);
+      watcher
+        .on("add", filePath => {
+          sync(filePath, getNodeModulePath(filePath, packageName));
+        })
+        .on("change", filePath => {
+          sync(filePath, getNodeModulePath(filePath, packageName));
+        });
 
-      sync(file, nodeModulePath);
+      backup(getNodeModulePath(file, packageName));
 
       watchers[file] = watcher;
 
       watcher.on("close", () => {
         console.info("Watch closed");
       });
+
+      console.info("Ctrl+C to exit");
     });
 }
 
 function sync(source, nodeModulePath) {
   fs.copySync(source, nodeModulePath);
+  console.info("Synced: " + nodeModulePath);
 }
 
 function backup(nodeModulePath) {
+  const backupPath = nodeModulePath + ".npm-link-watch-backup";
   fs.existsSync(nodeModulePath) &&
-    fs.copySync(nodeModulePath, nodeModulePath + ".npm-link-watch-backup");
+    !fs.existsSync(backupPath) &&
+    fs.copySync(nodeModulePath, backupPath);
 }
 
 main();

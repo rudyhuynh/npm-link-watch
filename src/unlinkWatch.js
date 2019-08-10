@@ -6,7 +6,7 @@ const {
   getGlobalSymlinks,
   globalLinkPath,
   getNodeModulePath
-} = require("./utils");
+} = require("./common");
 
 const [, , packageName] = process.argv;
 
@@ -28,8 +28,8 @@ function main() {
     .map(file => fs.readlinkSync(file))
     .forEach(file => {
       const nodeModulePath = getNodeModulePath(file, packageName);
-
-      fs.copySync(nodeModulePath + ".npm-link-watch-backup", nodeModulePath);
+      const backupPath = nodeModulePath + ".npm-link-watch-backup";
+      fs.existsSync(backupPath) && fs.copySync(backupPath, nodeModulePath);
       console.info(" Restored: " + nodeModulePath);
     });
   console.info("Unlink Successfully!");
