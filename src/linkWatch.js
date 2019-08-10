@@ -22,7 +22,9 @@ function main() {
   if (param.startsWith("./")) {
     link(params.filter(param => param.startsWith("./")));
   } else if (validateNpmPackageName(param).validForNewPackages) {
-    watch(param);
+    watch(
+      params.filter(param => validateNpmPackageName(param).validForNewPackages)
+    );
   } else {
     console.error(
       "Invalid parameter. Expect either a relative path (started with './') or a package name"
@@ -54,40 +56,36 @@ function link(dirPaths) {
   );
 }
 
-const watchers = {};
+function watch(packageNames) {
+  console.info(`Start to watch and sync from ${packageNames.join(", ")}`);
 
-function watch(packageName) {
-  console.info(`Start to watch and sync from ${packageName}`);
+  packageNames.forEach(packageName => watchPerPackage(packageName));
 
-  getGlobalSymlinks(packageName)
-    .map(file => fs.readlinkSync(file))
+  console.info("Ctrl+C to exit\n");
+}
 
-    .forEach(file => {
-      const watcher = chokidar.watch(file);
+function watchPerPackage(packageName) {
+  const watchedFiles = getGlobalSymlinks(packageName).map(file =>
+    fs.readlinkSync(file)
+  );
 
-      watcher
-        .on("add", filePath => {
-          sync(filePath, getNodeModulePath(filePath, packageName));
-        })
-        .on("change", filePath => {
-          sync(filePath, getNodeModulePath(filePath, packageName));
-        });
+  watchedFiles.forEach(file => {
+    backup(getNodeModulePath(file, packageName));
+  });
 
-      backup(getNodeModulePath(file, packageName));
-
-      watchers[file] = watcher;
-
-      watcher.on("close", () => {
-        console.info("Watch closed");
-      });
-
-      console.info("Ctrl+C to exit");
+  chokidar
+    .watch(watchedFiles)
+    .on("add", filePath => {
+      sync(filePath, getNodeModulePath(filePath, packageName));
+    })
+    .on("change", filePath => {
+      sync(filePath, getNodeModulePath(filePath, packageName));
     });
 }
 
 function sync(source, nodeModulePath) {
   fs.copySync(source, nodeModulePath);
-  console.info("Synced: " + nodeModulePath);
+  console.info("Synced: " + source + " --> " + nodeModulePath);
 }
 
 function backup(nodeModulePath) {
