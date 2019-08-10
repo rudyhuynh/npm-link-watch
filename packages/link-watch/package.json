@@ -1,6 +1,6 @@
 {
   "name": "npm-link-watch",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "author": "rudyhuynh <rudyhuynh@github.com>",
   "license": "MIT",
   "bin": {
