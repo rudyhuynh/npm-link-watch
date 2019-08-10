@@ -19,5 +19,8 @@
   "devDependencies": {
     "eslint": "^6.1.0",
     "lerna": "^3.16.4"
+  },
+  "scripts": {
+    "publish": "lerna version patch --yes && lerna publish from-git --yes"
   }
 }
