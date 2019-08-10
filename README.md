@@ -23,8 +23,8 @@ npx npm-link-watch x
 
 - `...path`: strings of relative paths (start with `./`), separated by space.
 
-Save symbolic links of the specified `paths` into a global directory (`~/.npm-link-watch`).
-Run at the package you want to link and watch
+  Save symbolic links of the specified `paths` into a global directory (`~/.npm-link-watch`).
+  Run at the package you want to link and watch
 
 #### `npx npm-link-watch <...package-name>`
 
