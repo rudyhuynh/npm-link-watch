@@ -5,7 +5,8 @@ const rimraf = require("rimraf");
 const {
   getGlobalSymlinks,
   globalLinkPath,
-  getNodeModulePath
+  getNodeModulePath,
+  isLinked
 } = require("@npm-link-watch/common");
 var validateNpmPackageName = require("validate-npm-package-name");
 const chokidar = require("chokidar");
@@ -59,6 +60,13 @@ function link(dirPaths) {
 function watch(packageNames) {
   console.info(`Start to watch and sync from ${packageNames.join(", ")}`);
 
+  for (let packageName of packageNames) {
+    if (!isLinked(packageName)) {
+      console.error(`ERROR: package ${packageName} is not linked yet.`);
+      return;
+    }
+  }
+
   packageNames.forEach(packageName => watchPerPackage(packageName));
 
   console.info("Ctrl+C to exit\n");
@@ -80,6 +88,9 @@ function watchPerPackage(packageName) {
     })
     .on("change", filePath => {
       sync(filePath, getNodeModulePath(filePath, packageName));
+    })
+    .on("unlink", filePath => {
+      rimraf.sync(getNodeModulePath(filePath, packageName));
     });
 }
 
