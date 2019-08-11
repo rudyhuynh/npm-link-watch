@@ -19,8 +19,13 @@ function getNodeModulePath(globalPath, packageName) {
   return path.resolve(cwd, "node_modules", packageName, relativeTarget);
 }
 
+function isLinked(packageName) {
+  return fs.existsSync(path.resolve(globalLinkPath, packageName));
+}
+
 module.exports = {
   getGlobalSymlinks,
   globalLinkPath,
-  getNodeModulePath
+  getNodeModulePath,
+  isLinked
 };
