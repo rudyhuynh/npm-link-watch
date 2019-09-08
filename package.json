@@ -1,6 +1,10 @@
 {
   "name": "npm-link-watch",
   "version": "1.0.3",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "main": "index.js",
   "author": "rudyhuynh <rudyhuynh@github.com>",
   "license": "MIT",
