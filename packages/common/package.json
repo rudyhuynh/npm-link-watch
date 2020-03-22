@@ -1,7 +1,7 @@
 {
     "name": "npm-link-watch-common",
     "main": "./src/common.js",
-    "version": "1.0.23",
+    "version": "1.0.24",
     "dependencies": {
         "fs-extra": "^8.1.0",
         "glob": "^7.1.4"
