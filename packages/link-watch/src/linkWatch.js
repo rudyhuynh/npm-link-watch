@@ -70,6 +70,9 @@ function watchPerPackage(packageName) {
     chokidar
         .watch(watchedFiles)
         .on("add", filePath => {
+            console.log("add");
+            console.log("\t filePath", filePath);
+            console.log("\t packageName", packageName);
             sync(filePath, getNodeModulePath(filePath, packageName));
         })
         .on("change", filePath => {
