@@ -1,6 +1,6 @@
 {
     "name": "npm-link-watch",
-    "version": "1.0.19",
+    "version": "1.0.20",
     "author": "rudyhuynh <rudyhuynh@github.com>",
     "license": "MIT",
     "bin": {
@@ -15,7 +15,7 @@
     "repository": "github:rudyhuynh/npm-link-only",
     "bugs": "https://github.com/rudyhuynh/npm-link-only/issues",
     "dependencies": {
-        "@npm-link-watch/common": "^1.0.19",
+        "@npm-link-watch/common": "^1.0.20",
         "chokidar": "^3.0.2",
         "fs-extra": "^8.1.0",
         "glob": "^7.1.4",
@@ -25,5 +25,5 @@
     "devDependencies": {
         "eslint": "^6.1.0"
     },
-    "gitHead": "add5aeefc68be37dfbdd22ad399694f13fb5e382"
+    "gitHead": "8ffd11519169dc743037aa9147c782b288170f43"
 }
