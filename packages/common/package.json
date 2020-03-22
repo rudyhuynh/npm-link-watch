@@ -1,10 +1,13 @@
 {
     "name": "@npm-link-watch/common",
     "main": "./src/common.js",
-    "version": "1.0.19",
+    "version": "1.0.20",
     "dependencies": {
         "fs-extra": "^8.1.0",
         "glob": "^7.1.4"
     },
-    "gitHead": "add5aeefc68be37dfbdd22ad399694f13fb5e382"
+    "publishConfig": {
+        "access": "public"
+    },
+    "gitHead": "8ffd11519169dc743037aa9147c782b288170f43"
 }
