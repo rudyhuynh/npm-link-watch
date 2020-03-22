@@ -24,7 +24,10 @@
         "eslint": "^6.1.0",
         "lerna": "^3.16.4"
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "scripts": {
-        "publish_all": "lerna version patch --yes && lerna publish from-git --yes"
+        "publish_all": "lerna publish --force-publish --yes"
     }
 }
