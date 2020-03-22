@@ -1,6 +1,6 @@
 {
     "name": "npm-unlink-watch",
-    "version": "1.0.17",
+    "version": "1.0.18",
     "author": "rudyhuynh <rudyhuynh@github.com>",
     "license": "MIT",
     "bin": {
@@ -15,7 +15,7 @@
     "repository": "github:rudyhuynh/npm-link-only",
     "bugs": "https://github.com/rudyhuynh/npm-link-only/issues",
     "dependencies": {
-        "@npm-link-watch/common": "^1.0.17",
+        "@npm-link-watch/common": "^1.0.18",
         "chokidar": "^3.0.2",
         "fs-extra": "^8.1.0",
         "glob": "^7.1.4",
@@ -25,5 +25,5 @@
     "devDependencies": {
         "eslint": "^6.1.0"
     },
-    "gitHead": "0d6f42aa009808c84a550617f381e4c2190f10c6"
+    "gitHead": "9f23c7b6d30483c862e2147739e83a4f02044c33"
 }
